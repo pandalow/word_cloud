@@ -1,10 +1,21 @@
 import re
+import os
+import requests
+
 import jieba
 from PIL import Image
 from wordcloud import WordCloud
 import gradio as gr
 from typing import List
 
+FONT_PATH = "NotoSansCJK-Regular.otf"
+FONT_URL = "https://github.com/adobe-fonts/source-han-sans/raw/release/OTF/SimplifiedChinese/SourceHanSansSC-Regular.otf"
+
+
+if not os.path.exists(FONT_PATH):
+    print("Downloading font...")
+    with open(FONT_PATH, "wb") as f:
+        f.write(requests.get(FONT_URL).content)
 
 def tokenize_text(text:str) -> List:
     """
@@ -40,7 +51,7 @@ def generate_world_cloud(text:str) -> Image.Image:
     segmented = tokenize_text(text)
     
     wc = WordCloud(
-        font_path="simhei.ttf", 
+        font_path=FONT_PATH,
         width=800,
         height=400,
         background_color='white'
