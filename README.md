@@ -4,6 +4,8 @@
 
 This is a simple web application that generates word clouds from mixed Chinese-English text. It supports both direct text input and `.txt` file upload. Chinese word segmentation is handled by `jieba`, and the visualization is generated using `WordCloud`.
 
+Demo website: https://huggingface.co/spaces/pandalow/word_cloud_generator
+
 ### Features
 
 * Supports both Chinese and English text
